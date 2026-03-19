@@ -6,7 +6,7 @@ const PKG_URL =
 export function Nav() {
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/70 border-b border-white/5">
-      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
@@ -19,9 +19,10 @@ export function Nav() {
           </Link>
         </div>
         <div className="flex items-center gap-6">
-          <a href="/#features" className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Features</a>
-          <Link href="/blog/reverse-engineering-copied" className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Blog</Link>
-          <a href="/#download" className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Download</a>
+          {/* Hide nav links on mobile, show on md+ */}
+          <a href="/#features" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Features</a>
+          <Link href="/blog/reverse-engineering-copied" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Blog</Link>
+          <a href="/#download" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Download</a>
           <a
             href={PKG_URL}
             className="text-sm px-4 py-1.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-colors"

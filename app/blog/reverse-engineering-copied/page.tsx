@@ -10,6 +10,18 @@ export const metadata: Metadata = {
     description:
       "Rebuilding an abandoned macOS clipboard manager with AI — architecture, implementation, and lessons learned.",
     type: "article",
+    images: [
+      {
+        url: "https://getcopied.app/og-blog.png",
+        width: 1200,
+        height: 630,
+        alt: "How We Reverse-Engineered a Dead Mac App in 48 Hours with AI",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://getcopied.app/og-blog.png"],
   },
 };
 

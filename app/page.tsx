@@ -2,7 +2,11 @@
 
 import { motion } from "framer-motion";
 
-const DOWNLOAD_URL =
+const PKG_URL =
+  "https://github.com/MagnetonIO/copied-app/releases/download/v1.0.0-dev/Copied-1.0-Installer.pkg";
+const DMG_URL =
+  "https://github.com/MagnetonIO/copied-app/releases/download/v1.0.0-dev/Copied-1.0.dmg";
+const RELEASES_URL =
   "https://github.com/MagnetonIO/copied-app/releases/latest";
 
 const fadeUp = {
@@ -47,7 +51,7 @@ function Nav() {
           <a href="#features" className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Features</a>
           <a href="#download" className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Download</a>
           <a
-            href={DOWNLOAD_URL}
+            href={PKG_URL}
             className="text-sm px-4 py-1.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-colors"
           >
             Get Copied
@@ -97,7 +101,7 @@ function Hero() {
 
         <motion.div variants={fadeUp} className="flex items-center justify-center gap-4">
           <a
-            href={DOWNLOAD_URL}
+            href={PKG_URL}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold text-base hover:bg-white/90 transition-all hover:scale-105"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -399,7 +403,7 @@ function Download() {
 
         <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href={DOWNLOAD_URL}
+            href={PKG_URL}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-black font-semibold text-base hover:bg-white/90 transition-all hover:scale-105"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -409,7 +413,7 @@ function Download() {
             <span className="text-xs text-black/50 font-normal">.pkg</span>
           </a>
           <a
-            href={DOWNLOAD_URL}
+            href={DMG_URL}
             className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl border border-white/20 text-white/80 font-medium text-base hover:bg-white/5 transition-all"
           >
             Download DMG
@@ -446,7 +450,7 @@ function Footer() {
           <a href="https://github.com/MagnetonIO/copied-app" className="hover:text-white transition-colors">
             GitHub
           </a>
-          <a href={DOWNLOAD_URL} className="hover:text-white transition-colors">
+          <a href={RELEASES_URL} className="hover:text-white transition-colors">
             Releases
           </a>
           <span>&copy; {new Date().getFullYear()} Magneton Labs, LLC</span>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const PKG_URL =
-  "https://github.com/MagnetonIO/copied-app/releases/download/v1.0.0-dev/Copied-1.0-Installer.pkg";
+  "https://github.com/MagnetonIO/copied-app/releases/download/v1.0.0/Copied-1.0-Installer.pkg";
 
 export function Nav() {
   return (

@@ -5,9 +5,9 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 const PKG_URL =
-  "https://github.com/MagnetonIO/copied-app/releases/download/v1.0.0/Copied-1.0-Installer.pkg";
+  "https://github.com/MagnetonIO/copied-app/releases/download/v1.1.0/Copied-1.1.0-Installer.pkg";
 const DMG_URL =
-  "https://github.com/MagnetonIO/copied-app/releases/download/v1.0.0/Copied-1.0.dmg";
+  "https://github.com/MagnetonIO/copied-app/releases/download/v1.1.0/Copied-1.1.0.dmg";
 const RELEASES_URL =
   "https://github.com/MagnetonIO/copied-app/releases/latest";
 

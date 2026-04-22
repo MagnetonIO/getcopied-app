@@ -3,7 +3,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Copied",
+  title: "Privacy Policy",
   description:
     "How Copied handles your clipboard data. Short version: locally on your Mac, or in your private iCloud — nowhere else.",
 };

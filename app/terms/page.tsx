@@ -3,7 +3,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — Copied",
+  title: "Terms of Use",
   description:
     "Terms and conditions for Copied, the macOS clipboard manager by Magneton Labs, LLC.",
 };

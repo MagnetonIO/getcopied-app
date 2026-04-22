@@ -3,7 +3,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Support — Copied",
+  title: "Support",
   description:
     "Help, FAQs, and contact info for Copied, the macOS clipboard manager.",
 };

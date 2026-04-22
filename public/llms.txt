@@ -1,0 +1,43 @@
+# Copied
+
+> Fast menu-bar clipboard manager for macOS — every copy you make (text, images, code, links, files) is saved, searchable, and restorable. Optional iCloud Sync keeps history in sync across all your Macs.
+
+Copied is published by Magneton Labs, LLC. It ships in three variants from the same codebase:
+
+- **Mac App Store** (paid) — one-time $4.99 in-app purchase unlocks iCloud Sync.
+- **Direct download** (paid) — Developer ID-signed notarized PKG; iCloud Sync unlocked via Stripe Checkout that returns a signed Ed25519 license JWT, stored in Keychain.
+- **OSS** (local-only) — fully unlocked, for personal use; built locally from source, not redistributed.
+
+Local clipboard history is always free. iCloud Sync is the paid unlock.
+
+## Key pages
+
+- [Home](https://www.getcopied.app/): feature overview + download.
+- [Support](https://www.getcopied.app/support): FAQ covering getting started, keyboard shortcuts, iCloud Sync setup and troubleshooting, privacy, uninstall.
+- [Privacy Policy](https://www.getcopied.app/privacy): what we collect (nothing unless you enable iCloud Sync; then only your clipboard in your private CloudKit container), what we don't (no analytics, no trackers, no third parties beyond Apple + Stripe + EmailJS for license delivery).
+- [Terms of Use](https://www.getcopied.app/terms): license grants (3-Mac limit per paid license), acceptable use, refund policy (14-day via Stripe, Apple's policy for App Store), no-warranty and liability clauses, Delaware governing law.
+- [Buy (Stripe Checkout)](https://www.getcopied.app/buy?app=mac): one-time $4.99 iCloud Sync unlock for the direct-download variant.
+- [GitHub release](https://github.com/MagnetonIO/copied-app/releases/latest): direct-download PKG.
+
+## Key capabilities
+
+- Fast menu bar popover with keyboard-first navigation (⌃⇧C global hotkey).
+- Full-text fuzzy search across text, rich text, HTML, URLs, and extracted image text.
+- Smart content detection: code, URLs, images, files, videos.
+- Rich Copy As — write the exact pasteboard types your target app expects.
+- `copied://` URL scheme for automation.
+- Automatic tracking-parameter stripping on copied URLs.
+- Favorites, trash, custom lists, excluded apps.
+- Optional iCloud Sync via private CloudKit container (paid; 3 Macs per license).
+- Local-only by default — no telemetry, no analytics, no data leaves your device unless Sync is on.
+
+## Requirements
+
+- macOS 15.0 (Sequoia) or later
+- Apple Silicon or Intel
+- For iCloud Sync: active iCloud account with iCloud Drive enabled
+
+## Contact
+
+- Support: support@getcopied.app
+- Publisher: Magneton Labs, LLC, United States

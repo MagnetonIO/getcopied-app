@@ -1,18 +1,37 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import "./globals.css";
 
+const GA_ID = "G-7LYHYJ4FM7";
+const SITE_URL = "https://www.getcopied.app";
+
 export const metadata: Metadata = {
-  title: "Copied — Clipboard Manager for macOS",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Copied — Clipboard Manager for macOS",
+    template: "%s — Copied",
+  },
   description:
-    "A modern clipboard manager with code detection, fuzzy search, smart transformations, and iCloud sync. Built for developers.",
+    "Copied is a fast menu-bar clipboard manager for macOS. Fuzzy search, smart content detection, rich-paste, and optional iCloud sync across all your Macs.",
   keywords: [
     "clipboard manager",
-    "macOS",
+    "clipboard manager mac",
+    "macOS clipboard",
     "clipboard history",
-    "code snippets",
-    "productivity",
-    "developer tools",
+    "pasteboard manager",
+    "code snippet manager",
+    "iCloud clipboard sync",
+    "productivity mac app",
+    "developer tools mac",
+    "copy paste manager",
   ],
+  authors: [{ name: "Magneton Labs, LLC", url: SITE_URL }],
+  creator: "Magneton Labs, LLC",
+  publisher: "Magneton Labs, LLC",
+  applicationName: "Copied",
+  category: "productivity",
+  alternates: { canonical: "/" },
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
@@ -21,12 +40,13 @@ export const metadata: Metadata = {
     title: "Copied — Clipboard Manager for macOS",
     description:
       "Code detection, fuzzy search, smart paste, iCloud sync. Your clipboard, supercharged.",
-    url: "https://getcopied.app",
+    url: SITE_URL,
     siteName: "Copied",
     type: "website",
+    locale: "en_US",
     images: [
       {
-        url: "https://getcopied.app/og.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Copied — Clipboard Manager for macOS",
@@ -38,8 +58,57 @@ export const metadata: Metadata = {
     title: "Copied — Clipboard Manager for macOS",
     description:
       "Code detection, fuzzy search, smart paste, iCloud sync. Your clipboard, supercharged.",
-    images: ["https://getcopied.app/og.png"],
+    images: ["/og.png"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+// Structured data for Google Rich Results + AI crawlers. Next.js recommends
+// next/script with type="application/ld+json" as the canonical pattern.
+const softwareAppJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Copied",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "macOS 15.0 or later",
+  description:
+    "Clipboard manager for macOS with fuzzy search, code detection, rich-paste, and optional iCloud sync across Macs.",
+  url: SITE_URL,
+  image: `${SITE_URL}/og.png`,
+  downloadUrl:
+    "https://github.com/MagnetonIO/copied-app/releases/download/v1.2.0/Copied-License-v1.2.0.pkg",
+  softwareVersion: "1.2.0",
+  author: {
+    "@type": "Organization",
+    name: "Magneton Labs, LLC",
+    url: SITE_URL,
+  },
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Free download",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+    {
+      "@type": "Offer",
+      name: "iCloud Sync unlock",
+      price: "4.99",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `${SITE_URL}/buy`,
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -49,7 +118,43 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            // Consent Mode v2 — deny analytics until user opts in via the
+            // banner. ConsentBanner.tsx fires gtag('consent','update',...)
+            // after Accept. Essential storage stays granted.
+            gtag('consent', 'default', {
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'functionality_storage': 'granted',
+              'security_storage': 'granted',
+              'wait_for_update': 500
+            });
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+        <Script
+          id="ld-json-software"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {JSON.stringify(softwareAppJsonLd)}
+        </Script>
+      </head>
+      <body>
+        {children}
+        <ConsentBanner />
+      </body>
     </html>
   );
 }

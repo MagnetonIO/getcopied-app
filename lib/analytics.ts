@@ -13,7 +13,10 @@ declare global {
   }
 }
 
-export type TrackParams = Record<string, string | number | boolean | undefined>;
+// GA4 recommended events accept nested structures (e.g. `items` for commerce
+// events), so keep this permissive — gtag serializes whatever we pass.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TrackParams = Record<string, any>;
 
 export function track(event: string, params?: TrackParams) {
   if (typeof window === "undefined") return;

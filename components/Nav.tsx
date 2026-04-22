@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const PKG_URL =
-  "https://github.com/MagnetonIO/copied-app/releases/download/v1.0.0/Copied-1.0-Installer.pkg";
+  "https://github.com/MagnetonIO/copied-app/releases/download/v1.2.0/Copied-License-v1.2.0.pkg";
 
 export function Nav() {
   return (
@@ -22,6 +22,7 @@ export function Nav() {
           {/* Hide nav links on mobile, show on md+ */}
           <a href="/#features" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Features</a>
           <Link href="/blog/reverse-engineering-copied" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Blog</Link>
+          <Link href="/support" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Support</Link>
           <a href="/#download" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Download</a>
           <a
             href={PKG_URL}

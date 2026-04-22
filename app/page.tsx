@@ -5,9 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 const PKG_URL =
-  "https://github.com/MagnetonIO/copied-app/releases/download/v1.1.2/Copied-1.1.2-Installer.pkg";
-const DMG_URL =
-  "https://github.com/MagnetonIO/copied-app/releases/download/v1.1.2/Copied-1.1.2.dmg";
+  "https://github.com/MagnetonIO/copied-app/releases/download/v1.2.0/Copied-License-v1.2.0.pkg";
 const RELEASES_URL =
   "https://github.com/MagnetonIO/copied-app/releases/latest";
 
@@ -387,11 +385,11 @@ function Download() {
             <span className="text-xs text-black/50 font-normal">.pkg</span>
           </a>
           <a
-            href={DMG_URL}
+            href="/buy?app=mac"
             className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl border border-white/20 text-white/80 font-medium text-base hover:bg-white/5 transition-all"
           >
-            Download DMG
-            <span className="text-xs text-white/30 font-normal">drag &amp; drop</span>
+            Unlock iCloud Sync
+            <span className="text-xs text-white/30 font-normal">$4.99</span>
           </a>
         </motion.div>
 

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const RELEASES_URL =
   "https://github.com/MagnetonIO/copied-app/releases/latest";
 
@@ -16,7 +18,16 @@ export function Footer() {
             Copied &mdash; by Magneton Labs
           </span>
         </div>
-        <div className="flex items-center gap-6 text-sm text-[var(--text-tertiary)]">
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-[var(--text-tertiary)]">
+          <Link href="/support" className="hover:text-white transition-colors">
+            Support
+          </Link>
+          <Link href="/privacy" className="hover:text-white transition-colors">
+            Privacy
+          </Link>
+          <Link href="/terms" className="hover:text-white transition-colors">
+            Terms
+          </Link>
           <a href="https://github.com/MagnetonIO/copied-app" className="hover:text-white transition-colors">
             GitHub
           </a>

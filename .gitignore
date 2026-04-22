@@ -3,3 +3,11 @@ node_modules/
 out/
 .DS_Store
 .vercel
+
+# Env + secrets
+.env
+.env.local
+.env.*.local
+webhook-dev/.env.local
+*.pem
+*.key

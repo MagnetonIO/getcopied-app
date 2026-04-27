@@ -49,7 +49,7 @@ function Hero() {
         <motion.div variants={fadeUp} className="mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-[var(--text-secondary)] mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Now available for macOS
+            Now on macOS &middot; iOS coming via TestFlight
           </div>
         </motion.div>
 
@@ -69,7 +69,7 @@ function Hero() {
           className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Copied auto-detects code, searches your history instantly, transforms
-          text on the fly, and syncs across all your Macs.
+          text on the fly, and syncs across all your Macs and iOS devices.
         </motion.p>
 
         <motion.div variants={fadeUp} className="flex items-center justify-center gap-4">
@@ -82,6 +82,12 @@ function Hero() {
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
             </svg>
             Download for Mac
+          </a>
+          <a
+            href="mailto:support@getcopied.app?subject=iOS%20TestFlight%20Beta%20Invite&body=Please%20add%20me%20to%20the%20Copied%20iOS%20TestFlight%20beta."
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white/80 font-medium text-base hover:bg-white/5 transition-all"
+          >
+            Join iOS Beta
           </a>
           <a
             href="https://github.com/MagnetonIO/copied-app"
@@ -185,7 +191,7 @@ const features = [
   {
     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>,
     title: "iCloud Sync",
-    desc: "Your clipboard history syncs across all your Macs automatically via iCloud.",
+    desc: "Your clipboard history syncs across all your Macs and iOS devices automatically via iCloud.",
   },
   {
     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 3l-4 4-4-4" /></svg>,
@@ -371,7 +377,7 @@ function Download() {
             Ready to try?
           </h2>
           <p className="text-[var(--text-secondary)] text-lg mb-10">
-            Free during development. macOS 15+ required.
+            Free during development. macOS 15+ or iOS 18+ required.
           </p>
         </motion.div>
 
@@ -398,7 +404,7 @@ function Download() {
         </motion.div>
 
         <motion.p variants={fadeUp} className="mt-6 text-xs text-[var(--text-tertiary)]">
-          Requires macOS Sequoia (15.0) or later. Apple Silicon &amp; Intel supported.
+          Requires macOS Sequoia (15.0) or later (Apple Silicon &amp; Intel) or iOS 18.0+ (iPhone &amp; iPad via TestFlight).
         </motion.p>
       </motion.div>
     </section>

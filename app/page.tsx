@@ -377,7 +377,7 @@ function Download() {
             Ready to try?
           </h2>
           <p className="text-[var(--text-secondary)] text-lg mb-10">
-            Free during development. macOS 15+ or iOS 18+ required.
+            Free download. iCloud Sync unlocks for $4.99 (one-time). macOS 15+ or iOS 18+.
           </p>
         </motion.div>
 

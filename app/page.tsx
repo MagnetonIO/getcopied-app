@@ -49,7 +49,7 @@ function Hero() {
         <motion.div variants={fadeUp} className="mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-[var(--text-secondary)] mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Now on macOS &middot; iOS Beta on TestFlight
+            Now on macOS &middot; iOS Beta available
           </div>
         </motion.div>
 
@@ -84,7 +84,7 @@ function Hero() {
             Download for Mac
           </a>
           <a
-            href="mailto:support@getcopied.app?subject=iOS%20TestFlight%20Beta%20Invite&body=Please%20add%20me%20to%20the%20Copied%20iOS%20TestFlight%20beta."
+            href="mailto:support@getcopied.app?subject=iOS%20Beta%20Invite&body=Please%20add%20me%20to%20the%20Copied%20iOS%20Beta."
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white/80 font-medium text-base hover:bg-white/5 transition-all"
           >
             Join iOS Beta
@@ -404,7 +404,7 @@ function Download() {
         </motion.div>
 
         <motion.p variants={fadeUp} className="mt-6 text-xs text-[var(--text-tertiary)]">
-          Requires macOS Sequoia (15.0) or later (Apple Silicon &amp; Intel) or iOS 18.0+ (iPhone &amp; iPad via TestFlight).
+          Requires macOS Sequoia (15.0) or later (Apple Silicon &amp; Intel) or iOS 18.0+ (iPhone &amp; iPad — Beta).
         </motion.p>
       </motion.div>
     </section>

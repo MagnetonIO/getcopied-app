@@ -49,7 +49,7 @@ function Hero() {
         <motion.div variants={fadeUp} className="mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-[var(--text-secondary)] mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Now on macOS &middot; iOS coming via TestFlight
+            Now on macOS &middot; iOS Beta on TestFlight
           </div>
         </motion.div>
 

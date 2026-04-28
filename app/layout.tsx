@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { ConsentBanner } from "@/components/ConsentBanner";
+import { APP_VERSION, PKG_URL } from "@/lib/version";
 import "./globals.css";
 
 const GA_ID = "G-7LYHYJ4FM7";
@@ -94,9 +95,8 @@ const softwareAppJsonLd = {
     "Clipboard manager for macOS with fuzzy search, code detection, rich-paste, and optional iCloud sync across Macs.",
   url: SITE_URL,
   image: `${SITE_URL}/og.png`,
-  downloadUrl:
-    "https://github.com/MagnetonIO/copied-app/releases/download/v1.3.0/Copied-License-v1.3.0.pkg",
-  softwareVersion: "1.3.0",
+  downloadUrl: PKG_URL,
+  softwareVersion: APP_VERSION,
   author: {
     "@type": "Organization",
     name: "Magneton Labs, LLC",

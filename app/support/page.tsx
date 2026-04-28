@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { APP_VERSION } from "@/lib/version";
 
 export const metadata: Metadata = {
   title: "Support — Copied Clipboard Manager Help, FAQs, Contact",
@@ -26,7 +27,7 @@ const FAQ_DATA: { q: string; a: string }[] = [
   // iCloud Sync
   { q: "How do I unlock iCloud Sync?", a: "Open Settings (Cmd + ,) → Sync tab → Unlock iCloud Sync — $4.99. One-time payment. The Mac App Store version uses in-app purchase; the direct-download version uses Stripe." },
   { q: "Does my purchase carry across both versions?", a: "No — App Store purchases and Stripe licenses are separate systems. If you bought on the App Store and want to use the direct-download build, or vice versa, email us and we'll sort it out." },
-  { q: "iCloud Sync is on, but my other Mac isn't seeing my clips. What do I check?", a: "1) Both Macs signed into the same Apple ID with iCloud Drive enabled. 2) Both running Copied 1.3.0 or newer. 3) In Settings → Sync, the toggle is on and status shows Sync is active. 4) Give it up to 60 seconds — CloudKit takes a moment for new items. 5) Still nothing? Send us a note — we'll look at your CloudKit logs with you." },
+  { q: "iCloud Sync is on, but my other Mac isn't seeing my clips. What do I check?", a: `1) Both Macs signed into the same Apple ID with iCloud Drive enabled. 2) Both running Copied ${APP_VERSION} or newer. 3) In Settings → Sync, the toggle is on and status shows Sync is active. 4) Give it up to 60 seconds — CloudKit takes a moment for new items. 5) Still nothing? Send us a note — we'll look at your CloudKit logs with you.` },
   { q: "How many Macs can I use one license on?", a: "Up to three Macs per license. If you need more, reach out and we'll work with you." },
   // Troubleshooting
   { q: "Copied isn't capturing new clipboard items.", a: "Open Settings → Clipboard and confirm Capture images / Capture rich text match what you're copying. If an app is in the Excluded Apps list, items copied from it won't be captured." },
@@ -143,7 +144,7 @@ export default function SupportPage() {
             <FAQItem q="iCloud Sync is on, but my other Mac isn&rsquo;t seeing my clips. What do I check?">
               <ol className="list-decimal list-inside space-y-1 text-[var(--text-secondary)]">
                 <li>Both Macs signed into the same Apple ID with iCloud Drive enabled.</li>
-                <li>Both running Copied 1.3.0 or newer.</li>
+                <li>Both running Copied {APP_VERSION} or newer.</li>
                 <li>In Settings → Sync, the toggle is <b>on</b> and status shows <b>Sync is active</b>.</li>
                 <li>Give it up to ~60 seconds — CloudKit takes a moment for new items.</li>
                 <li>Still nothing? Send us a note — we&rsquo;ll look at your CloudKit logs with you.</li>

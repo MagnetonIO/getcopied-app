@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { trackDownload } from "@/lib/analytics";
-
-const PKG_URL =
-  "https://github.com/MagnetonIO/copied-app/releases/download/v1.3.0/Copied-License-v1.3.0.pkg";
+import { APP_VERSION, PKG_URL } from "@/lib/version";
 
 export function Nav() {
   const pathname = usePathname();
@@ -40,7 +38,7 @@ export function Nav() {
           <a href="/#download" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Download</a>
           <a
             href={PKG_URL}
-            onClick={() => trackDownload({ location: "nav_cta", variant: "license", version: "1.3.0" })}
+            onClick={() => trackDownload({ location: "nav_cta", variant: "license", version: APP_VERSION })}
             className="text-sm px-4 py-1.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-colors"
           >
             Get Copied

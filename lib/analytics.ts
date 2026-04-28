@@ -31,12 +31,16 @@ export function trackDownload(params: {
   variant: "license" | "oss";
   version: string;
 }) {
+  // License (paid) is the canonical "Copied" download → no qualifier in
+  // the filename. OSS keeps the "-OSS" suffix so analytics can split the
+  // funnels.
+  const fileName = params.variant === "license"
+    ? `Copied-v${params.version}.pkg`
+    : `Copied-OSS-v${params.version}.pkg`;
   track("file_download", {
-    file_name: `Copied-${params.variant === "license" ? "License" : "OSS"}-v${params.version}.pkg`,
+    file_name: fileName,
     file_extension: "pkg",
-    link_url: `https://github.com/MagnetonIO/copied-app/releases/download/v${params.version}/Copied-${
-      params.variant === "license" ? "License" : "OSS"
-    }-v${params.version}.pkg`,
+    link_url: `https://github.com/MagnetonIO/copied-app/releases/download/v${params.version}/${fileName}`,
     cta_location: params.location,
     app_version: params.version,
   });

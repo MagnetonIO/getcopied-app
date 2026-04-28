@@ -1,19 +1,34 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy — How Copied Handles Your Clipboard Data",
   description:
-    "How Copied handles your clipboard data. Short version: locally on your Mac, or in your private iCloud — nowhere else.",
+    "Copied stores clipboard history locally on your Mac, or — if you opt in to iCloud Sync — in your private CloudKit container. No servers, no telemetry, no analytics from us.",
+  alternates: { canonical: "/privacy" },
 };
 
 const EFFECTIVE_DATE = "April 21, 2026";
 const SUPPORT_EMAIL = "support@getcopied.app";
+const SITE_URL = "https://www.getcopied.app";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: `${SITE_URL}/privacy` },
+  ],
+};
 
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen">
+      <Script id="ld-json-breadcrumb-privacy" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify(breadcrumbJsonLd)}
+      </Script>
       <Nav />
 
       {/* Hero */}

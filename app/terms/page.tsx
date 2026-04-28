@@ -1,19 +1,34 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Use",
+  title: "Terms of Use — Copied License Agreement",
   description:
-    "Terms and conditions for Copied, the macOS clipboard manager by Magneton Labs, LLC.",
+    "Plain-English terms for using Copied: license, refunds, acceptable use, warranty, and contact for Magneton Labs, LLC.",
+  alternates: { canonical: "/terms" },
 };
 
 const EFFECTIVE_DATE = "April 21, 2026";
 const SUPPORT_EMAIL = "support@getcopied.app";
+const SITE_URL = "https://www.getcopied.app";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Terms of Use", item: `${SITE_URL}/terms` },
+  ],
+};
 
 export default function TermsPage() {
   return (
     <main className="min-h-screen">
+      <Script id="ld-json-breadcrumb-terms" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify(breadcrumbJsonLd)}
+      </Script>
       <Nav />
 
       {/* Hero */}

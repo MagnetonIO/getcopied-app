@@ -1,19 +1,71 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Support",
+  title: "Support — Copied Clipboard Manager Help, FAQs, Contact",
   description:
-    "Help, FAQs, and contact info for Copied, the macOS clipboard manager.",
+    "Help center for Copied: setup, keyboard shortcuts, iCloud Sync, troubleshooting, and how to reach us. 14 answers covering every common question.",
+  alternates: { canonical: "/support" },
 };
 
 const SUPPORT_EMAIL = "support@getcopied.app";
 const GITHUB_ISSUES = "https://github.com/MagnetonIO/copied-app/issues";
+const SITE_URL = "https://www.getcopied.app";
+
+// Plain-text FAQ data for Schema.org/FAQPage JSON-LD. Mirrors the JSX
+// in the FAQ section below — when you edit a Q&A in the JSX, update the
+// matching entry here so SERP rich-results stay in sync.
+const FAQ_DATA: { q: string; a: string }[] = [
+  // Getting started
+  { q: "How do I open Copied after installing?", a: "Copied lives in the menu bar — look for the clipboard icon at the top of your screen. Click it to see your clipboard history. The app doesn't show in the Dock by default." },
+  { q: "What's the keyboard shortcut?", a: "Control + Shift + C opens the popover from any app. Change it in Settings → Shortcuts." },
+  { q: "Why does Copied ask for Accessibility permission?", a: "macOS requires Accessibility permission for global hotkeys (so the popover can be triggered from any app). Copied does not read any other app's content — the permission is only used to register the keyboard shortcut. If you skip this prompt, you can still open the popover by clicking the menu bar icon." },
+  { q: "Where is my clipboard history stored?", a: "Locally, in a SwiftData database inside Copied's application support folder. Clipboard contents never leave your device unless you enable iCloud Sync." },
+  // iCloud Sync
+  { q: "How do I unlock iCloud Sync?", a: "Open Settings (Cmd + ,) → Sync tab → Unlock iCloud Sync — $4.99. One-time payment. The Mac App Store version uses in-app purchase; the direct-download version uses Stripe." },
+  { q: "Does my purchase carry across both versions?", a: "No — App Store purchases and Stripe licenses are separate systems. If you bought on the App Store and want to use the direct-download build, or vice versa, email us and we'll sort it out." },
+  { q: "iCloud Sync is on, but my other Mac isn't seeing my clips. What do I check?", a: "1) Both Macs signed into the same Apple ID with iCloud Drive enabled. 2) Both running Copied 1.3.0 or newer. 3) In Settings → Sync, the toggle is on and status shows Sync is active. 4) Give it up to 60 seconds — CloudKit takes a moment for new items. 5) Still nothing? Send us a note — we'll look at your CloudKit logs with you." },
+  { q: "How many Macs can I use one license on?", a: "Up to three Macs per license. If you need more, reach out and we'll work with you." },
+  // Troubleshooting
+  { q: "Copied isn't capturing new clipboard items.", a: "Open Settings → Clipboard and confirm Capture images / Capture rich text match what you're copying. If an app is in the Excluded Apps list, items copied from it won't be captured." },
+  { q: "The global hotkey Control+Shift+C doesn't work.", a: "System Settings → Privacy & Security → Accessibility — make sure Copied is listed and toggled on. Quit and relaunch the app after enabling." },
+  { q: "How do I reset Copied's history?", a: "Menu bar icon → right-click → Clear All Clippings. For a full reset, also empty the Trash tab and toggle iCloud Sync off then back on (it re-fetches from CloudKit)." },
+  { q: "How do I fully uninstall Copied?", a: "1) Quit Copied from the menu bar. 2) Move /Applications/Copied.app to the Trash. 3) Delete local data: ~/Library/Application Support/Copied. 4) Delete preferences: ~/Library/Preferences/com.mlong.copied.mac.plist. 5) Optional — delete license: security delete-generic-password -s com.mlong.copied.license" },
+  // Privacy
+  { q: "What does Copied send off my Mac?", a: "Nothing, unless you turn on iCloud Sync. Then your clipboard history is stored in your private CloudKit container (only you can read it). We have no servers, no telemetry, no analytics." },
+  { q: "Does Copied read passwords from my clipboard?", a: "Copied captures whatever the system clipboard contains — including passwords if a password manager puts them there. To exclude a password manager, add it in Settings → Clipboard → Excluded Apps." },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_DATA.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Support", item: `${SITE_URL}/support` },
+  ],
+};
 
 export default function SupportPage() {
   return (
     <main className="min-h-screen">
+      <Script id="ld-json-faq" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify(faqJsonLd)}
+      </Script>
+      <Script id="ld-json-breadcrumb-support" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify(breadcrumbJsonLd)}
+      </Script>
       <Nav />
 
       {/* Hero */}
@@ -91,7 +143,7 @@ export default function SupportPage() {
             <FAQItem q="iCloud Sync is on, but my other Mac isn&rsquo;t seeing my clips. What do I check?">
               <ol className="list-decimal list-inside space-y-1 text-[var(--text-secondary)]">
                 <li>Both Macs signed into the same Apple ID with iCloud Drive enabled.</li>
-                <li>Both running Copied 1.2.0 or newer.</li>
+                <li>Both running Copied 1.3.0 or newer.</li>
                 <li>In Settings → Sync, the toggle is <b>on</b> and status shows <b>Sync is active</b>.</li>
                 <li>Give it up to ~60 seconds — CloudKit takes a moment for new items.</li>
                 <li>Still nothing? Send us a note — we&rsquo;ll look at your CloudKit logs with you.</li>

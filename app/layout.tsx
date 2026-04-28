@@ -70,6 +70,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  // Search Console / Bing Webmaster ownership tokens. Set the env vars
+  // in Vercel → Project → Settings → Environment Variables after
+  // claiming each property and pasting the meta-tag verification value.
+  // Empty/undefined values render no <meta>, which is fine until claimed.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: {
+      "msvalidate.01": process.env.BING_SITE_VERIFICATION ?? "",
+    },
+  },
 };
 
 // Structured data for Google Rich Results + AI crawlers. Next.js recommends
@@ -85,8 +95,8 @@ const softwareAppJsonLd = {
   url: SITE_URL,
   image: `${SITE_URL}/og.png`,
   downloadUrl:
-    "https://github.com/MagnetonIO/copied-app/releases/download/v1.2.0/Copied-License-v1.2.0.pkg",
-  softwareVersion: "1.2.0",
+    "https://github.com/MagnetonIO/copied-app/releases/download/v1.3.0/Copied-License-v1.3.0.pkg",
+  softwareVersion: "1.3.0",
   author: {
     "@type": "Organization",
     name: "Magneton Labs, LLC",
@@ -108,6 +118,23 @@ const softwareAppJsonLd = {
       availability: "https://schema.org/InStock",
       url: `${SITE_URL}/buy`,
     },
+  ],
+};
+
+// Schema.org Organization — separate node so search engines can link
+// the publisher entity across SoftwareApplication, FAQPage, and any
+// future BreadcrumbList nodes. `sameAs` ties the site to its public
+// profiles so Google can dedupe the brand across the web.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Magneton Labs, LLC",
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon.png`,
+  email: "support@getcopied.app",
+  sameAs: [
+    "https://github.com/MagnetonIO",
+    "https://github.com/MagnetonIO/copied-app",
   ],
 };
 
@@ -149,6 +176,13 @@ export default function RootLayout({
           strategy="beforeInteractive"
         >
           {JSON.stringify(softwareAppJsonLd)}
+        </Script>
+        <Script
+          id="ld-json-organization"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {JSON.stringify(organizationJsonLd)}
         </Script>
       </head>
       <body>

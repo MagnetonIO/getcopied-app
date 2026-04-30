@@ -1,15 +1,20 @@
 // Single source of truth for the public Copied app version + download URL.
-// Driven by NEXT_PUBLIC_APP_VERSION (set in .env.local for dev, in Vercel
-// → Project Settings → Environment Variables for prod). The fallback
-// matches whatever was last shipped so a missing env var never breaks
-// the CTA — it just goes stale until someone bumps the var.
 //
-// To ship a new version end-to-end:
-//   1. Build + upload the new .pkg to GitHub releases (tag = v<new>)
-//   2. Bump NEXT_PUBLIC_APP_VERSION in .env.local AND on Vercel
-//   3. Redeploy (Vercel auto-deploys on env-var change)
+// Resolution order (first non-empty wins):
+//   1. NEXT_PUBLIC_APP_VERSION — explicit pin (set in Vercel → Project
+//      Settings → Environment Variables when you need to override).
+//   2. LATEST_RELEASE_TAG from lib/version-generated.ts — overwritten at
+//      build time by scripts/sync-version.mjs (runs as `prebuild`), which
+//      hits api.github.com/repos/MagnetonIO/copied-app/releases/latest.
+//
+// Net effect: every Vercel rebuild picks up the latest GitHub release
+// automatically. To trigger a rebuild on release, configure a release-
+// published webhook on the copied-app repo pointing at a Vercel deploy hook.
+// No env-var bump or per-release commit needed.
 
-export const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? "1.3.3";
+import { LATEST_RELEASE_TAG } from "./version-generated";
+
+export const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? LATEST_RELEASE_TAG;
 
 export const GITHUB_REPO = "MagnetonIO/copied-app";
 

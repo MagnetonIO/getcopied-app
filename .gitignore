@@ -3,6 +3,7 @@ node_modules/
 out/
 .DS_Store
 .vercel
+tsconfig.tsbuildinfo
 
 # Env + secrets
 .env

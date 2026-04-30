@@ -9,7 +9,7 @@
 //   2. Bump NEXT_PUBLIC_APP_VERSION in .env.local AND on Vercel
 //   3. Redeploy (Vercel auto-deploys on env-var change)
 
-export const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? "1.3.2";
+export const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? "1.3.3";
 
 export const GITHUB_REPO = "MagnetonIO/copied-app";
 

@@ -33,6 +33,7 @@ export function Nav() {
         <div className="flex items-center gap-6">
           {/* Hide nav links on mobile, show on md+ */}
           <a href="/#features" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Features</a>
+          <Link href="/changelog" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Changelog</Link>
           <Link href="/blog/reverse-engineering-copied" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Blog</Link>
           <Link href="/support" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Support</Link>
           <a href="/#download" className="hidden md:inline text-sm text-[var(--text-secondary)] hover:text-white transition-colors">Download</a>

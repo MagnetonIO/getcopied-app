@@ -22,6 +22,9 @@ export function Footer() {
           <Link href="/support" className="hover:text-white transition-colors">
             Support
           </Link>
+          <Link href="/changelog" className="hover:text-white transition-colors">
+            Changelog
+          </Link>
           <Link href="/privacy" className="hover:text-white transition-colors">
             Privacy
           </Link>

@@ -402,8 +402,10 @@ function Download() {
         <motion.p variants={fadeUp} className="mt-6 text-xs text-[var(--text-tertiary)]">
           Requires macOS Sequoia (15.0) or later (Apple Silicon &amp; Intel) or iOS 18.0+ (iPhone &amp; iPad — Beta).
         </motion.p>
+        <motion.p variants={fadeUp} className="mt-3 text-xs text-[var(--text-tertiary)]">
+          Prefer Homebrew? <code className="text-white/70">brew install --cask magnetonio/tap/copied</code>
+        </motion.p>
       </motion.div>
     </section>
   );
 }
-

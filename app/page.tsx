@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { trackDownload, trackUnlockClick } from "@/lib/analytics";
@@ -359,6 +360,15 @@ function ShortcutRow({ keys, action }: { keys: string[]; action: string }) {
 /* ── Download ────────────────────────────────── */
 
 function Download() {
+  const homebrewCommand = "brew install --cask magnetonio/tap/copied";
+  const [homebrewCopied, setHomebrewCopied] = useState(false);
+
+  const copyHomebrewCommand = async () => {
+    await navigator.clipboard.writeText(homebrewCommand);
+    setHomebrewCopied(true);
+    window.setTimeout(() => setHomebrewCopied(false), 1800);
+  };
+
   return (
     <section id="download" className="py-24 px-6 bg-[var(--bg-secondary)]">
       <motion.div
@@ -402,9 +412,32 @@ function Download() {
         <motion.p variants={fadeUp} className="mt-6 text-xs text-[var(--text-tertiary)]">
           Requires macOS Sequoia (15.0) or later (Apple Silicon &amp; Intel) or iOS 18.0+ (iPhone &amp; iPad — Beta).
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-3 text-xs text-[var(--text-tertiary)]">
-          Prefer Homebrew? <code className="text-white/70">brew install --cask magnetonio/tap/copied</code>
-        </motion.p>
+        <motion.div variants={fadeUp} className="mt-5 mx-auto max-w-xl">
+          <p className="mb-2 text-xs text-[var(--text-tertiary)]">Or install with Homebrew</p>
+          <div className="flex min-w-0 items-center gap-3 border border-white/10 bg-black/30 px-4 py-3 text-left">
+            <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-sm text-white/75">
+              {homebrewCommand}
+            </code>
+            <button
+              type="button"
+              onClick={copyHomebrewCommand}
+              className="grid h-9 w-9 shrink-0 place-items-center border border-white/15 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              aria-label="Copy Homebrew install command"
+              title="Copy Homebrew install command"
+            >
+              {homebrewCopied ? (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="m5 12 4 4L19 6" />
+                </svg>
+              ) : (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

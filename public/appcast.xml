@@ -7,12 +7,15 @@
     <description>Updates for the direct-download edition of Copied.</description>
     <language>en</language>
     <item>
-      <title>Copied 1.3.3 (14)</title>
-      <pubDate>Tue, 29 Sep 2026 21:01:27 +0000</pubDate>
+      <title>Copied 1.3.3 (15)</title>
+      <pubDate>Wed, 30 Sep 2026 15:43:44 +0000</pubDate>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
       <description><![CDATA[
         <h2>Copied 1.3.3</h2>
         <ul>
+          <li>Adds About Copied to the popover, status-item menu, and application menu.</li>
+          <li>Shows update-check progress and results in About settings.</li>
+          <li>Adds background Homebrew update checks and installation through Terminal, with a copyable upgrade command.</li>
           <li>Fixes copying the selected clipping with Command+C, Control+C, and Edit &gt; Copy in the main window.</li>
           <li>Adds secure automatic update checks for direct downloads.</li>
           <li>Improves clipboard reliability and image handling.</li>
@@ -20,12 +23,12 @@
         </ul>
       ]]></description>
       <enclosure
-        url="https://github.com/MagnetonIO/copied-app/releases/download/v1.3.3/Copied-v1.3.3-build14.pkg"
-        sparkle:version="14"
+        url="https://github.com/MagnetonIO/copied-app/releases/download/v1.3.3/Copied-v1.3.3-build15.pkg"
+        sparkle:version="15"
         sparkle:shortVersionString="1.3.3"
         sparkle:installationType="package"
-        sparkle:edSignature="F8NJPys7xxbthjMzEdsW3sfwLZlJKLPNfoNPQfg1DPi/S+5TIhl7n4aucNRjES5ej0Sfc8jGJDiR9N1LTgeqBA=="
-        length="3223330"
+        sparkle:edSignature="rO/pDrsiC8ptmEZ9U7Eg4jBNEhfu/BiIrHxS47+TwYlbc3F/sgLrZrdZy6fcCpmPR41jNlZ9w4soZ5mBfA1NAA=="
+        length="3273909"
         type="application/octet-stream" />
     </item>
   </channel>

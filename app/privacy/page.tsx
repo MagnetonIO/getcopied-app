@@ -141,7 +141,7 @@ export default function PrivacyPage() {
           <ul>
             <li>
               <strong>Apple</strong> &mdash; macOS, iCloud, CloudKit, Keychain,
-              Accessibility API, and (for the App Store variant) StoreKit In-App
+              and (for the App Store variant) StoreKit In-App
               Purchase. Governed by{" "}
               <a href="https://www.apple.com/legal/privacy/">Apple&rsquo;s privacy policy</a>.
             </li>

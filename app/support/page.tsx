@@ -22,7 +22,7 @@ const FAQ_DATA: { q: string; a: string }[] = [
   // Getting started
   { q: "How do I open Copied after installing?", a: "Copied lives in the menu bar — look for the clipboard icon at the top of your screen. Click it to see your clipboard history. The app doesn't show in the Dock by default." },
   { q: "What's the keyboard shortcut?", a: "Control + Shift + C opens the popover from any app. Change it in Settings → Shortcuts." },
-  { q: "Why does Copied ask for Accessibility permission?", a: "macOS requires Accessibility permission for global hotkeys (so the popover can be triggered from any app). Copied does not read any other app's content — the permission is only used to register the keyboard shortcut. If you skip this prompt, you can still open the popover by clicking the menu bar icon." },
+  { q: "Does Copied need Accessibility permission?", a: "No. Copied 1.3.3 build 18 and newer register the global shortcut without Accessibility access. Older website builds may still ask; update from Settings → About → Check for Updates or download the latest installer. You can turn off Copied in System Settings → Privacy & Security → Accessibility." },
   { q: "Where is my clipboard history stored?", a: "Locally, in a SwiftData database inside Copied's application support folder. Clipboard contents never leave your device unless you enable iCloud Sync." },
   // iCloud Sync
   { q: "How do I unlock iCloud Sync?", a: "Open Settings (Cmd + ,) → Sync tab → Unlock iCloud Sync — $4.99. One-time payment. The Mac App Store version uses in-app purchase; the direct-download version uses Stripe." },
@@ -31,7 +31,7 @@ const FAQ_DATA: { q: string; a: string }[] = [
   { q: "How many Macs can I use one license on?", a: "Up to three Macs per license. If you need more, reach out and we'll work with you." },
   // Troubleshooting
   { q: "Copied isn't capturing new clipboard items.", a: "Open Settings → Clipboard and confirm Capture images / Capture rich text match what you're copying. If an app is in the Excluded Apps list, items copied from it won't be captured." },
-  { q: "The global hotkey Control+Shift+C doesn't work.", a: "System Settings → Privacy & Security → Accessibility — make sure Copied is listed and toggled on. Quit and relaunch the app after enabling." },
+  { q: "The global hotkey Control+Shift+C doesn't work.", a: "Quit and relaunch Copied. If another app uses the same shortcut, choose a different combination in Copied's shortcut settings. Accessibility access is not required in the latest version. You can always open Copied by clicking its menu bar icon." },
   { q: "How do I reset Copied's history?", a: "Menu bar icon → right-click → Clear All Clippings. For a full reset, also empty the Trash tab and toggle iCloud Sync off then back on (it re-fetches from CloudKit)." },
   { q: "How do I fully uninstall Copied?", a: "1) Quit Copied from the menu bar. 2) Move /Applications/Copied.app to the Trash. 3) Delete local data: ~/Library/Application Support/Copied. 4) Delete preferences: ~/Library/Preferences/com.mlong.copied.mac.plist. 5) Optional — delete license: security delete-generic-password -s com.mlong.copied.license" },
   // Privacy
@@ -118,11 +118,11 @@ export default function SupportPage() {
               <kbd className="kbd">⌃</kbd> + <kbd className="kbd">⇧</kbd> + <kbd className="kbd">C</kbd> opens
               the popover from any app. Change it in Settings → Shortcuts.
             </FAQItem>
-            <FAQItem q="Why does Copied ask for Accessibility permission?">
-              macOS requires Accessibility permission for global hotkeys (so the popover can be
-              triggered from any app). Copied does <em>not</em> read any other app&rsquo;s content —
-              the permission is only used to register the keyboard shortcut. If you skip this prompt,
-              you can still open the popover by clicking the menu bar icon.
+            <FAQItem q="Does Copied need Accessibility permission?">
+              No. Copied 1.3.3 build 18 and newer register the global shortcut without
+              Accessibility access. Older website builds may still ask; update from
+              <b> Settings → About → Check for Updates</b> or download the latest installer.
+              You can turn off Copied in System Settings → Privacy &amp; Security → Accessibility.
             </FAQItem>
             <FAQItem q="Where is my clipboard history stored?">
               Locally, in a SwiftData database inside Copied&rsquo;s application support folder.
@@ -162,8 +162,9 @@ export default function SupportPage() {
               <b> Excluded Apps</b> list, items copied from it won&rsquo;t be captured.
             </FAQItem>
             <FAQItem q="The global hotkey ⌃⇧C doesn&rsquo;t work.">
-              System Settings → Privacy &amp; Security → Accessibility — make sure <b>Copied</b>
-              is listed and toggled on. Quit and relaunch the app after enabling.
+              Quit and relaunch Copied. If another app uses the same shortcut, choose a different
+              combination in Copied&rsquo;s shortcut settings. Accessibility access is not required
+              in the latest version. You can always open Copied by clicking its menu bar icon.
             </FAQItem>
             <FAQItem q="How do I reset Copied&rsquo;s history?">
               Menu bar icon → right-click → <b>Clear All Clippings</b>. For a full reset, also

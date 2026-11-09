@@ -19,6 +19,9 @@ export function Footer() {
           </span>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-[var(--text-tertiary)]">
+          <Link href="/beta" className="hover:text-white transition-colors">
+            Beta
+          </Link>
           <Link href="/support" className="hover:text-white transition-colors">
             Support
           </Link>

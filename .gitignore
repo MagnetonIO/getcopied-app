@@ -9,6 +9,19 @@ tsconfig.tsbuildinfo
 .env
 .env.local
 .env.*.local
+.env.*
+!.env.example
+!.env.sample
 webhook-dev/.env.local
 *.pem
 *.key
+*.p8
+*.p12
+.keys/
+
+# Local browser sessions and test output
+.playwright-mcp/
+playwright-report/
+test-results/
+coverage/
+*.log

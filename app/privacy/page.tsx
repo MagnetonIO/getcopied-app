@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const EFFECTIVE_DATE = "April 21, 2026";
+const EFFECTIVE_DATE = "November 1, 2026";
 const SUPPORT_EMAIL = "support@getcopied.app";
 const SITE_URL = "https://www.getcopied.app";
 
@@ -128,12 +128,23 @@ export default function PrivacyPage() {
           </p>
           <h3>Our servers</h3>
           <p>
-            We operate one small service: the Stripe webhook endpoint that runs
+            We operate a Stripe webhook endpoint that runs
             after a direct-download license purchase. It receives the Stripe
             checkout event, signs a license key, and sends it to the email
             address you entered at checkout. The endpoint logs the event id and
             email address for troubleshooting and retains those logs for 30
             days. It never receives or stores your clipboard contents.
+          </p>
+          <h3>Beta requests</h3>
+          <p>
+            When you submit a beta request, your name, email address, consent,
+            and a spam-prevention field are sent to Magneton Labs&rsquo; company
+            administration service at <code className="code">admin.magnetonlabs.com</code>,
+            together with the app identifier &ldquo;copied&rdquo;. We use this
+            information to manage your request, verify your email when required,
+            and contact you about beta access. The form does not send clipboard
+            contents. Contact <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>{" "}
+            to withdraw consent or request deletion of your beta-request data.
           </p>
 
           <h2>Third-party services</h2>
@@ -200,8 +211,8 @@ export default function PrivacyPage() {
           <p>
             Material changes will be noted here along with an updated effective
             date at the top of the page. We don&rsquo;t email you about changes
-            because we don&rsquo;t have your email unless you bought a
-            direct-download license.
+            unless needed for a service you requested. We may have your email
+            if you bought a direct-download license or submitted a beta request.
           </p>
 
           <h2>Contact</h2>

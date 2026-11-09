@@ -25,8 +25,8 @@ const FAQ_DATA: { q: string; a: string }[] = [
   { q: "Does Copied need Accessibility permission?", a: "No. Copied 1.3.3 build 18 and newer register the global shortcut without Accessibility access. Older website builds may still ask; update from Settings → About → Check for Updates or download the latest installer. You can turn off Copied in System Settings → Privacy & Security → Accessibility." },
   { q: "Where is my clipboard history stored?", a: "Locally, in a SwiftData database inside Copied's application support folder. Clipboard contents never leave your device unless you enable iCloud Sync." },
   // iCloud Sync
-  { q: "How do I unlock iCloud Sync?", a: "Open Settings (Cmd + ,) → Sync tab → Unlock iCloud Sync — $4.99. One-time payment. The Mac App Store version uses in-app purchase; the direct-download version uses Stripe." },
-  { q: "Does my purchase carry across both versions?", a: "No — App Store purchases and Stripe licenses are separate systems. If you bought on the App Store and want to use the direct-download build, or vice versa, email us and we'll sort it out." },
+  { q: "How do I unlock iCloud Sync?", a: "On Mac, open Settings → Sync → Unlock iCloud Sync. On iOS, open Settings → iCloud Sync → Unlock. App Store builds use Apple in-app purchase or Restore Purchases; the direct-download Mac version uses Stripe. Website license keys do not activate iOS." },
+  { q: "Does my purchase carry across both versions?", a: "App Store purchases and Stripe licenses are separate systems. On iOS, use Apple in-app purchase or Restore Purchases with the Apple Account that made the purchase. Website licenses only activate the direct-download Mac app. Existing website customers can contact support@getcopied.app about complimentary Apple offer-code availability; an offer code is not guaranteed." },
   { q: "iCloud Sync is on, but my other Mac isn't seeing my clips. What do I check?", a: `1) Both Macs signed into the same Apple ID with iCloud Drive enabled. 2) Both running Copied ${APP_VERSION} or newer. 3) In Settings → Sync, the toggle is on and status shows Sync is active. 4) Give it up to 60 seconds — CloudKit takes a moment for new items. 5) Still nothing? Send us a note — we'll look at your CloudKit logs with you.` },
   { q: "How many Macs can I use one license on?", a: "Up to three Macs per license. If you need more, reach out and we'll work with you." },
   // Troubleshooting
@@ -132,14 +132,18 @@ export default function SupportPage() {
 
           <FAQGroup title="iCloud Sync (paid)">
             <FAQItem q="How do I unlock iCloud Sync?">
-              Open Settings (<kbd className="kbd">⌘</kbd> + <kbd className="kbd">,</kbd>) →
-              <b> Sync</b> tab → <b>Unlock iCloud Sync — $4.99</b>. One-time payment.
-              The Mac App Store version uses in-app purchase; the direct-download version uses Stripe.
+              On Mac, open <b>Settings → Sync → Unlock iCloud Sync</b>. On iOS,
+              open <b>Settings → iCloud Sync → Unlock</b>. App Store builds use
+              Apple in-app purchase or <b>Restore Purchases</b>; the direct-download
+              Mac version uses Stripe. Website license keys do not activate iOS.
             </FAQItem>
             <FAQItem q="Does my purchase carry across both versions?">
-              No — App Store purchases and Stripe licenses are separate systems. If you bought on
-              the App Store and want to use the direct-download build, or vice versa, email us and
-              we&rsquo;ll sort it out.
+              App Store purchases and Stripe licenses are separate systems. On iOS,
+              use Apple in-app purchase or <b>Restore Purchases</b> with the Apple
+              Account that made the purchase. Website licenses only activate the
+              direct-download Mac app. Existing website customers can contact{" "}
+              <a className="link" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>{" "}
+              about complimentary Apple offer-code availability; an offer code is not guaranteed.
             </FAQItem>
             <FAQItem q="iCloud Sync is on, but my other Mac isn&rsquo;t seeing my clips. What do I check?">
               <ol className="list-decimal list-inside space-y-1 text-[var(--text-secondary)]">

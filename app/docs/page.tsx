@@ -177,10 +177,18 @@ export default function DocsPage() {
               rows={[
                 ["Mac App Store", "Settings → Sync → Unlock iCloud Sync $4.99. Handled by Apple in-app purchase."],
                 ["Mac (Direct / Stripe)", "Buy at getcopied.app/buy. You&rsquo;ll get an emailed license JWT and a copied:// URL that unlocks the app."],
-                ["iOS", "Settings → iCloud Sync → Unlock. Same $4.99 IAP as Mac App Store. Family Sharing and Restore Purchases both work."],
-                ["Cross-platform license", "Bought the Mac license (Stripe)? On iOS: Settings → iCloud Sync → Enter License Key. Paste the JWT or copied://unlock URL to unlock iOS without paying twice."],
+                ["iOS", "Settings → iCloud Sync → Unlock uses Apple in-app purchase. To recover an existing App Store purchase, choose Restore Purchases using the Apple Account that made the purchase."],
+                ["Website purchases and iOS", "Website license keys activate the direct-download Mac app only. iOS uses Apple in-app purchase or Restore Purchases, not license keys. Existing website customers can contact support@getcopied.app about complimentary Apple offer-code availability."],
               ]}
             />
+
+            <p className="mt-3">
+              Beta access and iCloud Sync activation are separate. You can{" "}
+              <a href="/beta" className="link">request iOS beta access</a> or use the{" "}
+              <a href="https://testflight.apple.com/join/A54b13Rv" className="link">public TestFlight link</a>.
+              A beta request does not activate iCloud Sync or confirm a TestFlight invitation.
+              Apple offer codes, when available, are redeemed through Apple, not as website license keys in Copied.
+            </p>
 
             <SubHeading>What gets synced</SubHeading>
             <ul className="list-disc list-inside space-y-1 text-[var(--text-secondary)]">

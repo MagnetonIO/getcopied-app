@@ -81,7 +81,7 @@ function Hero() {
             Download for Mac
           </a>
           <a
-            href="mailto:support@getcopied.app?subject=iOS%20Beta%20Invite&body=Please%20add%20me%20to%20the%20Copied%20iOS%20Beta."
+            href="/beta"
             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white/80 font-medium text-base hover:bg-white/5 transition-all"
           >
             Join iOS Beta

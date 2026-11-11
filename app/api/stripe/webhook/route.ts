@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { signLicense } from "@/lib/license";
 import { sendLicenseEmail } from "@/lib/email";
+import { loadCopiedCheckoutDecision } from "@/lib/copied-checkout";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -36,6 +37,22 @@ export async function POST(req: NextRequest) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
+
+    // The Stripe account is shared with other products: only Copied purchases get a license.
+    const decision = await loadCopiedCheckoutDecision(
+      session.id,
+      process.env.STRIPE_PRICE_ID,
+      (id, params) => stripe.checkout.sessions.listLineItems(id, params),
+    );
+    if (decision.action === "ignore") {
+      if (decision.reason === "missing-price-config") {
+        console.error(`STRIPE_PRICE_ID is not set; skipping license email (session ${session.id})`);
+      } else {
+        console.log(`Ignoring checkout for another product (session ${session.id})`);
+      }
+      return NextResponse.json({ received: true, ignored: true });
+    }
+
     const email =
       session.customer_details?.email ??
       session.customer_email ??

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { signLicense } from "@/lib/license";
+import { loadCopiedCheckoutDecision } from "@/lib/copied-checkout";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -26,6 +27,25 @@ export async function GET(req: NextRequest) {
 
   if (session.payment_status !== "paid") {
     return new NextResponse("Payment not completed", { status: 402 });
+  }
+
+  // The Stripe account is shared with other products: only Copied purchases unlock Copied.
+  let decision;
+  try {
+    decision = await loadCopiedCheckoutDecision(
+      session.id,
+      process.env.STRIPE_PRICE_ID,
+      (id, params) => stripe.checkout.sessions.listLineItems(id, params),
+    );
+  } catch {
+    return new NextResponse("Could not verify purchase", { status: 502 });
+  }
+  if (decision.action === "ignore") {
+    if (decision.reason === "missing-price-config") {
+      console.error(`STRIPE_PRICE_ID is not set; refusing to unlock (session ${session.id})`);
+      return new NextResponse("Stripe not configured", { status: 500 });
+    }
+    return new NextResponse("Not a Copied purchase", { status: 404 });
   }
 
   const email =

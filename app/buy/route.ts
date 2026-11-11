@@ -19,6 +19,8 @@ export async function GET(req: NextRequest) {
       mode: "payment",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
+      metadata: { app: "copied" },
+      payment_intent_data: { metadata: { app: "copied" } },
       success_url: `${origin}/unlock?session={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/`,
       allow_promotion_codes: true,

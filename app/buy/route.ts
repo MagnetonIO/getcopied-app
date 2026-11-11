@@ -20,7 +20,14 @@ export async function GET(req: NextRequest) {
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
       metadata: { app: "copied" },
-      payment_intent_data: { metadata: { app: "copied" } },
+      payment_intent_data: { metadata: { app: "copied" }, statement_descriptor_suffix: "COPIED" },
+      // The Stripe account is shared with other products: show Copied's own name and icon at checkout.
+      branding_settings: {
+        display_name: "Copied",
+        icon: { type: "url", url: `${origin}/icon.png` },
+        button_color: "#0071e3",
+        background_color: "#ffffff",
+      },
       success_url: `${origin}/unlock?session={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/`,
       allow_promotion_codes: true,
